@@ -6,12 +6,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <form method="post">
-      <textarea name="text_input" id="text_box" cols="30" rows="10"></textarea>
-    </form>
+    <style>
+      .cards-list {
+        z-index: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
 
+      .card {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+          -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+        cursor: pointer;
+        transition: 0.4s;
+      }
+
+      .card .card_image {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+      }
+
+      .card .card_image img {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+        object-fit: cover;
+      }
+
+      .card .card_title {
+        text-align: center;
+        border-radius: 0px 0px 40px 40px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: -80px;
+        height: 40px;
+      }
+
+      .card:hover {
+        transform: scale(0.9, 0.9);
+        box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+          -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+      }
+
+      .title-white {
+        color: white;
+      }
+
+      .title-black {
+        color: black;
+      }
+
+      @media all and (max-width: 500px) {
+        .card-list {
+          /* On small screens, we are no longer using row direction but column */
+          flex-direction: column;
+        }
+      }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-lg-2 col-xs-5"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        <!-- <li class="unstyled"> -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          fill="grey"
+          class="bi bi-person-circle"
+          viewBox="0 0 16 16"
+          style="margin-left: 1rem; cursor: pointer"
+        >
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+          <path
+            fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+          />
+        </svg>
+        <!-- </li> -->
+      </div>
+    </nav>
+    <div style="margin-top: 45px"></div>
+    <div class="cards-list">
+      <div class="card 1">
+        <div class="card_image">
+          <img src="https://i.redd.it/b3esnz5ra34y.jpg" />
+        </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 2">
+        <div class="card_image">
+          <img
+            src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg"
+          />
+        </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 3">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+        </div>
+        <div class="card_title">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 4">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+        </div>
+        <div class="card_title title-black">
+          <p>Card Title</p>
+        </div>
+      </div>
+    </div>
+    <div class="cards-list">
+      <div class="card 1">
+        <div class="card_image">
+          <img src="https://i.redd.it/b3esnz5ra34y.jpg" />
+        </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 2">
+        <div class="card_image">
+          <img
+            src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg"
+          />
+        </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 3">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+        </div>
+        <div class="card_title">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 4">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+        </div>
+        <div class="card_title title-black">
+          <p>Card Title</p>
+        </div>
+      </div>
+    </div>
+    <div class="cards-list">
+      <div class="card 1">
+        <div class="card_image">
+          <img src="https://i.redd.it/b3esnz5ra34y.jpg" />
+        </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 2">
+        <div class="card_image">
+          <img
+            src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg"
+          />
+        </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 3">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+        </div>
+        <div class="card_title">
+          <p>Card Title</p>
+        </div>
+      </div>
+
+      <div class="card 4">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+        </div>
+        <div class="card_title title-black">
+          <p>Card Title</p>
+        </div>
+      </div>
+    </div>
+    <footer class="page-footer font-small bg-dark text-white">
+      <div class="footer-copyright text-center py-3">
+        Created by - Siddhesh Shukla
+        <a href="https://github.com/Siddhesh-Shukla/"> Github Link </a>
+      </div>
+    </footer>
+    <!-- <div>
+      <form method="post">
+        <textarea
+          name="text_input"
+          id="text_box"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </form>
+    </div>
     <br />
     <div
       id="output"
@@ -36,6 +294,6 @@
           },
         });
       });
-    </script>
+    </script> -->
   </body>
 </html>
