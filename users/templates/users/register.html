@@ -1,0 +1,12 @@
+{% extends "main/base.html" %} {% block content_1 %}
+<!-- {% load crispy_forms_tags %} -->
+
+<div class="inner-page">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset>{{ form }}</fieldset>
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+Already have an account ? <a href="{% url 'login' %}">Sign In</a>
+{% endblock content_1 %}
