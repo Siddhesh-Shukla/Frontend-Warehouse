@@ -4,6 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <title>Frontend Warehouse</title>
@@ -26,15 +27,12 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-
-    <!-- Vendor CSS Files -->
-    <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
     <link
       href="{% static 'main/bootstrap.min.css' %}"
       rel="stylesheet"
     />
 
-    <!-- Template Main CSS File -->
+    <!-- CSS File -->
     <link href="{% static 'main/styles.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'main/homeStyles.css' %}"/>
   </head>
@@ -160,7 +158,6 @@
           </div>
         </div>
       </div>
-
       <div class="container">
         <div class="credits">
           Made by
@@ -169,6 +166,45 @@
       </div>
     </footer>
     <!-- End Footer -->
+    
+    <script>
+      $("#HTML").on("input", function (e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: '{% url "index" %}',
+          data: {
+            text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            dataType: "json",
+          },
+          success: function (data) {
+            $("#output").html(data.msg);
+          },
+          failure: function () {
+            console.log("Failed!");
+          },
+        });
+      });
+      $("#CSS").on("input", function (e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: '{% url "index" %}',
+          data: {
+            text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            dataType: "json",
+          },
+          success: function (data) {
+            $("#output").html(data.msg);
+          },
+          failure: function () {
+            console.log("Failed!");
+          },
+        });
+      });
+    </script> 
 
 
   </body>
