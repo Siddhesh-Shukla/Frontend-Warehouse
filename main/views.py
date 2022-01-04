@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
-def index(request):
+def home(request):
     if request.method =='GET':
         return render(request, 'main/index.html')
     elif request.is_ajax():
@@ -17,7 +17,7 @@ def index(request):
             }
             return JsonResponse(response)
 
-def edit(request):
+def workspace(request):
     if request.method =='GET':
         return render(request, 'main/editPage.html')
     elif request.is_ajax():

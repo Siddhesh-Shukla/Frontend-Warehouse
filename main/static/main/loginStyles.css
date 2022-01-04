@@ -40,7 +40,6 @@ body {
   width: 100%;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 .signin_container__form {
@@ -183,7 +182,8 @@ body {
 
 .input {
   background-color: #fff;
-  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
   padding: 0.9rem 0.9rem;
   margin: 0.5rem 0;
   width: 100%;

@@ -123,7 +123,7 @@
     e.preventDefault();
     $.ajax({
       type: "POST",
-      url: '{% url "index" %}',
+      url: '{% url "home" %}',
       data: {
         text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
         csrfmiddlewaretoken: "{{ csrf_token }}",
@@ -141,7 +141,7 @@
     e.preventDefault();
     $.ajax({
       type: "POST",
-      url: '{% url "index" %}',
+      url: '{% url "home" %}',
       data: {
         text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
         csrfmiddlewaretoken: "{{ csrf_token }}",

@@ -61,8 +61,9 @@
 
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
-            <li><a class="nav-link scrollto" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'workspace' %}">WorkSpace</a></li>
+            <li><a class="nav-link scrollto" href="#">About</a></li>
             <li class="dropdown">
               <a href="#"
                 ><span>Drop Down</span> <i class="bi bi-chevron-down"></i
@@ -92,7 +93,7 @@
         </nav>
         <!-- .navbar -->
 
-        <a href="#about" class="get-started-btn scrollto">Login</a>
+        <a href="{% url 'signup-signin' %}" class="get-started-btn scrollto">Login</a>
       </div>
     </header>
     <!-- End Header -->
@@ -175,7 +176,7 @@
         e.preventDefault();
         $.ajax({
           type: "POST",
-          url: '{% url "index" %}',
+          url: '{% url "home" %}',
           data: {
             text:
               "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
@@ -194,7 +195,7 @@
         e.preventDefault();
         $.ajax({
           type: "POST",
-          url: '{% url "index" %}',
+          url: '{% url "home" %}',
           data: {
             text:
               "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
