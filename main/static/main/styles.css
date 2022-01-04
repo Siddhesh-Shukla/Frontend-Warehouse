@@ -66,6 +66,7 @@ h6 {
   display: inline-block;
   border: 2px solid #ffc451;
 }
+
 .get-started-btn:hover {
   background: #ffbb38;
   color: #343a40;

@@ -34,7 +34,7 @@
 
     <!-- CSS File -->
     <link href="{% static 'main/styles.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'main/homeStyles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/loginStyles.css' %}"/>
   </head>
 
   <body>
@@ -94,7 +94,7 @@
         </nav>
         <!-- .navbar -->
 
-        <a href="#about" class="get-started-btn scrollto">Login</a>
+        <a href="#" class="get-started-btn scrollto">Login</a>
       </div>
     </header>
     <!-- End Header -->
@@ -104,18 +104,18 @@
       <section class="breadcrumbs">
         <div class="container">
           <div class="d-flex justify-content-between align-items-center">
-            <h2>Inner Page</h2>
+            <h2>SignIn/SignUp Page</h2>
             </form>
             <ol>
               <li><a href="index.html">Home</a></li>
-              <li>Register Page</li>
+              <li> User Registration Page</li>
             </ol>
           </div>
         </div>
       </section>
       <!-- End Breadcrumbs -->
 
-      <div class="inner-page">
+      <!-- <div class="inner-page">
         <form method="POST">
             {% csrf_token %}
             <fieldset>{{ form }}</fieldset>
@@ -123,21 +123,76 @@
         </form>
       </div>
       Already have an account ? 
-      <a href="{% url 'login' %}">Sign In</a>
+      <a href="{% url 'login' %}">Sign In</a> -->
+
+      <div class="signin_container right-panel-active">
+        <!-- Sign Up -->
+        <div class="signin_container__form signin_container--signup">
+          <form action="#" class="form" id="form1">
+            <h2 class="form__title">Sign Up</h2>
+            <input type="text" placeholder="User" class="input" />
+            <input type="email" placeholder="Email" class="input" />
+            <input type="password" placeholder="Password" class="input" />
+            <button class="btn2">Sign Up</button>
+          </form>
+        </div>
+
+        <!-- Sign In -->
+        <div class="signin_container__form signin_container--signin">
+          <form action="#" class="form" id="form2">
+            <h2 class="form__title">Sign In</h2>
+            <input type="email" placeholder="Email" class="input" />
+            <input type="password" placeholder="Password" class="input" />
+            <a href="#" class="link">Forgot your password?</a>
+            <button class="btn2">Sign In</button>
+          </form>
+        </div>
+
+        <!-- Overlay -->
+        <div class="signin_container__overlay">
+          <div class="overlay">
+            <div class="overlay__panel overlay--left">
+              <button class="btn get-started-btn scrollto" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay__panel overlay--right">
+              <button class="btn get-started-btn scrollto" id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const signInBtn = document.getElementById("signIn");
+        const signUpBtn = document.getElementById("signUp");
+        const fistForm = document.getElementById("form1");
+        const secondForm = document.getElementById("form2");
+        const signin_container = document.querySelector(".signin_container");
+
+        signInBtn.addEventListener("click", () => {
+          signin_container.classList.remove("right-panel-active");
+        });
+
+        signUpBtn.addEventListener("click", () => {
+          signin_container.classList.add("right-panel-active");
+        });
+
+        fistForm.addEventListener("submit", (e) => e.preventDefault());
+        secondForm.addEventListener("submit", (e) => e.preventDefault());
+
+      </script>
 
     </main>
     <!-- End main -->
 
 
     <!-- Footer -->
-    <footer id="footer">
+    <!-- <footer id="footer">
       <div class="container">
         <div class="credits">
           Made by
           <a href="https://github.com/Siddhesh-Shukla">Siddhesh Shukla</a>
         </div>
       </div>
-    </footer>
+    </footer> -->
     <!-- End Footer -->
 
   </body>
