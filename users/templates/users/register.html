@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,15 +57,16 @@
             d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"
           />
         </svg>
-          <a href="index.html">Frontend<span>Warehouse</span>.</a>
+          <a href="{% url 'home' %}">Frontend<span>Warehouse</span>.</a>
         </h1>
 
         <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
 
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
-            <li><a class="nav-link scrollto" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'workspace' %}">WorkSpace</a></li>
+            <li><a class="nav-link scrollto" href="#">About</a></li>
             <li class="dropdown">
               <a href="#"
                 ><span>Drop Down</span> <i class="bi bi-chevron-down"></i
@@ -94,7 +96,7 @@
         </nav>
         <!-- .navbar -->
 
-        <a href="#" class="get-started-btn scrollto">Login</a>
+        <a href="{% url 'signup-signin' %}" class="get-started-btn scrollto">Login</a>
       </div>
     </header>
     <!-- End Header -->
@@ -107,7 +109,7 @@
             <h2>SignIn/SignUp Page</h2>
             </form>
             <ol>
-              <li><a href="index.html">Home</a></li>
+              <li><a href="{% url 'home' %}">Home</a></li>
               <li> User Registration Page</li>
             </ol>
           </div>
@@ -115,36 +117,31 @@
       </section>
       <!-- End Breadcrumbs -->
 
-      <!-- <div class="inner-page">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset>{{ form }}</fieldset>
-            <button type="submit">Sign Up</button>
-        </form>
-      </div>
-      Already have an account ? 
-      <a href="{% url 'login' %}">Sign In</a> -->
-
       <div class="signin_container right-panel-active">
         <!-- Sign Up -->
         <div class="signin_container__form signin_container--signup">
-          <form action="#" class="form" id="form1">
+          <form method="POST" class="form">
+            {% csrf_token %}
             <h2 class="form__title">Sign Up</h2>
-            <input type="text" placeholder="User" class="input" />
+            {{ signup_form.username|add_class:"input" }}
+            {{ signup_form.email|add_class:"input" }}
+            {{ signup_form.password|add_class:"input" }}
+            
+            <!-- <input type="text" placeholder="User" class="input" />
             <input type="email" placeholder="Email" class="input" />
-            <input type="password" placeholder="Password" class="input" />
-            <button class="btn2">Sign Up</button>
+            <input type="password" placeholder="Password" class="input" /> -->
+            <button class="btn2" type="submit" name='submit' value='sign_up'>Sign In</button>
           </form>
         </div>
 
         <!-- Sign In -->
         <div class="signin_container__form signin_container--signin">
-          <form action="#" class="form" id="form2">
+          <form method="POST" class="form" > <!-- id="form2" -->
+            {% csrf_token %}
             <h2 class="form__title">Sign In</h2>
-            <input type="email" placeholder="Email" class="input" />
-            <input type="password" placeholder="Password" class="input" />
-            <a href="#" class="link">Forgot your password?</a>
-            <button class="btn2">Sign In</button>
+            {{ signin_form.username|add_class:"input" }}
+            {{ signin_form.password|add_class:"input" }}
+            <button class="btn2" type="submit" name='submit' value='sign_in'>Sign In</button>
           </form>
         </div>
 
