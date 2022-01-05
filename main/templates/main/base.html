@@ -92,8 +92,11 @@
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
-
-        <a href="{% url 'signup-signin' %}" class="get-started-btn scrollto">Login</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'profile' %}" class="get-started-btn scrollto">Profile</a>
+        {% else %}
+          <a href="{% url 'signup-signin' %}" class="get-started-btn scrollto">Login</a>
+        {% endif %}
       </div>
     </header>
     <!-- End Header -->

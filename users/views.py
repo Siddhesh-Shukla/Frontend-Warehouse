@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-
 
 
 def register(request):
@@ -39,7 +38,9 @@ def register(request):
     #     signup_form = UserRegisterForm()
     # return render(request, template_name="users/register.html", context={"signin_form":signin_form, "signup_form":signup_form})
 
-# @login_required
+
+
+@login_required
 def profile(request):
     # if request.method == 'POST':
     #     u_form = UserUpdateForm(request.POST, instance=request.user)
