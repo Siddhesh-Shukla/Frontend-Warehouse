@@ -36,6 +36,7 @@
     <!-- CSS File -->
     <link href="{% static 'main/styles.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'main/loginStyles.css' %}"/>
+
   </head>
 
   <body>
@@ -137,7 +138,7 @@
 
         <!-- Sign In -->
         <div class="signin_container__form signin_container--signin">
-          <form method="POST" class="form" > <!-- id="form2" -->
+          <form method="POST" class="form" >
             {% csrf_token %}
             <h2 class="form__title">Sign In</h2>
             {{ signin_form.username|add_class:"input" }}
@@ -158,40 +159,9 @@
           </div>
         </div>
       </div>
-      <script>
-        const signInBtn = document.getElementById("signIn");
-        const signUpBtn = document.getElementById("signUp");
-        const fistForm = document.getElementById("form1");
-        const secondForm = document.getElementById("form2");
-        const signin_container = document.querySelector(".signin_container");
 
-        signInBtn.addEventListener("click", () => {
-          signin_container.classList.remove("right-panel-active");
-        });
-
-        signUpBtn.addEventListener("click", () => {
-          signin_container.classList.add("right-panel-active");
-        });
-
-        fistForm.addEventListener("submit", (e) => e.preventDefault());
-        secondForm.addEventListener("submit", (e) => e.preventDefault());
-
-      </script>
-
+      <script src="{% static 'users/signupsignin.js' %}"></script>
     </main>
     <!-- End main -->
-
-
-    <!-- Footer -->
-    <!-- <footer id="footer">
-      <div class="container">
-        <div class="credits">
-          Made by
-          <a href="https://github.com/Siddhesh-Shukla">Siddhesh Shukla</a>
-        </div>
-      </div>
-    </footer> -->
-    <!-- End Footer -->
-
   </body>
 </html>
