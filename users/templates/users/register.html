@@ -96,7 +96,11 @@
         </nav>
         <!-- .navbar -->
 
-        <a href="{% url 'signup-signin' %}" class="get-started-btn scrollto">Login</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'profile' %}" class="get-started-btn scrollto">Profile</a>
+        {% else %}
+          <a href="{% url 'signup-signin' %}" class="get-started-btn scrollto">Login</a>
+        {% endif %}
       </div>
     </header>
     <!-- End Header -->
@@ -125,12 +129,9 @@
             <h2 class="form__title">Sign Up</h2>
             {{ signup_form.username|add_class:"input" }}
             {{ signup_form.email|add_class:"input" }}
-            {{ signup_form.password|add_class:"input" }}
-            
-            <!-- <input type="text" placeholder="User" class="input" />
-            <input type="email" placeholder="Email" class="input" />
-            <input type="password" placeholder="Password" class="input" /> -->
-            <button class="btn2" type="submit" name='submit' value='sign_up'>Sign In</button>
+            {{ signup_form.password1|add_class:"input" }}
+            {{ signup_form.password2|add_class:"input" }}
+            <button class="btn2" type="submit" name='submit' value='sign_up'>Sign Up</button>
           </form>
         </div>
 

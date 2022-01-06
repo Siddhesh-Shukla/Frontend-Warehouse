@@ -1,4 +1,5 @@
 {% extends "main/base.html" %} {% block content_1 %}
 <h1>{{ user.username }}</h1>
 <h1>{{ user.email }}</h1>
+<a href="{% url 'logout' %}" class="get-started-btn scrollto">Logout</a>
 {% endblock content_1 %}

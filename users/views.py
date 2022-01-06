@@ -7,7 +7,36 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 def register(request):
-    if request.method == "POST":
+    if request.method == 'POST':
+        if request.POST.get('submit') == 'sign_up':
+            signup_form = UserRegisterForm(request.POST)
+            if signup_form.is_valid():
+                signup_form.save()
+                username = signup_form.cleaned_data.get('username')
+                messages.success(request, f'account created for {username}')
+                return redirect('signup-signin')
+        elif request.POST.get('submit') == 'sign_in':
+            signin_form = AuthenticationForm(request, data=request.POST)
+            if signin_form.is_valid():
+                username = signin_form.cleaned_data.get('username')
+                password = signin_form.cleaned_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    messages.info(request, f"You are now logged in as {username}.")
+                    return redirect("home")
+                else:
+                    messages.error(request,"Invalid username or password.")
+            else:
+                messages.error(request,"Invalid username or password.")
+        else:
+            signup_form = UserRegisterForm()
+            signin_form = AuthenticationForm()
+    else:    
+        signup_form = UserRegisterForm()
+        signin_form = AuthenticationForm()
+    return render(request, 'users/register.html', {'signup_form': signup_form, 'signin_form': signin_form})
+    # if request.method == "POST":
         # if request.POST.get('submit') == 'sign_in':
         #     signin_form = AuthenticationForm(request, data=request.POST)
         #     if signin_form.is_valid():
@@ -23,16 +52,16 @@ def register(request):
         #     else:
         #         messages.error(request,"Invalid username or password.")
         # elif request.POST.get('submit') == 'sign_up':
-        signup_form = UserRegisterForm(request.POST)
-        if signup_form.is_valid():
-            signup_form.save()
-            username = signup_form.cleaned_data.get('username')
-            messages.success(request, f'account created for {username}')
-            return redirect('/')
-        else:    
-            signup_form = UserRegisterForm()
-    signup_form = UserRegisterForm()
-    return render(request, template_name="users/register.html", context={"signup_form":signup_form})
+    #     signup_form = UserRegisterForm(request.POST)
+    #     if signup_form.is_valid():
+    #         signup_form.save()
+    #         username = signup_form.cleaned_data.get('username')
+    #         messages.success(request, f'account created for {username}')
+    #         return redirect('/')
+    #     else:    
+    #         signup_form = UserRegisterForm()
+    # signup_form = UserRegisterForm()
+    # return render(request, template_name="users/register.html", context={"signup_form":signup_form})
     # else:
     #     signin_form = AuthenticationForm()
     #     signup_form = UserRegisterForm()
