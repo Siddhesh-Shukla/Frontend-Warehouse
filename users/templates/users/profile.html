@@ -1,5 +1,12 @@
 {% extends "main/base.html" %} {% block content_1 %}
 <h1>{{ user.username }}</h1>
 <h1>{{ user.email }}</h1>
-<a href="{% url 'logout' %}" class="get-started-btn scrollto">Logout</a>
+<img src="{{user.profile.image.url}}" style="width: 200px" />
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>{{ u_form }}</fieldset>
+  <fieldset>{{ p_form }}</fieldset>
+  <button type="submit">Update</button>
+</form>
+<a href="{% url 'logout' %}">Logout</a>
 {% endblock content_1 %}
