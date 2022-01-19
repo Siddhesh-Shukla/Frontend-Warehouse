@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
-    'posts.apps.PostsConfig',
     'crispy_forms',
     'widget_tweaks',
     
