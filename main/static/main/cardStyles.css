@@ -15,16 +15,16 @@
   margin-top: 30px;
 }
 
-.card--1 .card__img,
-.card--1 .card__img--hover {
+.card--1 .card_img,
+.card--1 .card_img--hover {
   background-image: url("https://cdn.pixabay.com/photo/2015/05/19/07/44/browser-773215_640.png");
 }
 
-.card__like {
+.card_like {
   width: 18px;
 }
 
-.card__img {
+.card_img {
   visibility: hidden;
   background-size: cover;
   background-position: center;
@@ -35,7 +35,7 @@
   border-top-right-radius: 12px;
 }
 
-.card__info-hover {
+.card_info-hover {
   position: absolute;
   padding: 16px;
   width: 100%;
@@ -43,7 +43,7 @@
   top: 0;
 }
 
-.card__img--hover {
+.card_img--hover {
   transition: 0.2s all ease-out;
   background-size: cover;
   background-position: center;
@@ -72,7 +72,7 @@
   transform: scale(1.1, 1.1);
 }
 
-.card__info {
+.card_info {
   z-index: 2;
   background-color: #fff;
   border-bottom-left-radius: 12px;
@@ -80,7 +80,7 @@
   padding: 16px 24px 24px 24px;
 }
 
-.card__category {
+.card_category {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   font-size: 13px;
@@ -89,34 +89,35 @@
   color: #868686;
 }
 
-.card__title {
+.card_title {
   margin-top: 5px;
   margin-bottom: 10px;
   font-family: "Roboto Slab", serif;
 }
 
-.card__by {
+.card_by {
   font-size: 12px;
   font-family: "Raleway", sans-serif;
   font-weight: 500;
 }
 
-.card__author {
+.card_author {
   font-weight: 600;
+  font-size: medium;
   text-decoration: none;
-  color: #ad7d52;
+  color: #e4a826;
 }
 
-.card:hover .card__img--hover {
+.card:hover .card_img--hover {
   height: 100%;
   opacity: 0.3;
 }
 
-.card:hover .card__info {
+.card:hover .card_info {
   background-color: transparent;
   position: relative;
 }
 
-.card:hover .card__info-hover {
+.card:hover .card_info-hover {
   opacity: 1;
 }

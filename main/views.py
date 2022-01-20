@@ -14,6 +14,13 @@ def home(request):
     }
     return render(request, 'main/index.html', context)
 
+class PostListView(ListView):
+    model = Post
+    template_name = 'main/index.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 6
+
 def workspace(request):
     if request.method =='GET':
         return render(request, 'main/editPage.html')
@@ -34,8 +41,8 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'main/user_post.html'
     context_object_name = 'posts'
-    # ordering = ['-date_posted']
-    # paginate_by = 2
+    ordering = ['-date_posted']
+    paginate_by = 6
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
