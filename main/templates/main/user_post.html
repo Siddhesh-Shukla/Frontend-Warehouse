@@ -3,8 +3,8 @@
 <div>
   <h1><a href="#">{{ post.title }}</a></h1>
   <!-- <img src="{{ post.author.profile.image.url }}" style="width: 50px" /> -->
-  <p>{{ post.html }}</p>
-  <p>{{ post.css }}</p>
+  <p style="white-space: pre-line">{{ post.html }}</p>
+  <p style="white-space: pre-line">{{ post.css }}</p>
   <a>{{ post.date_posted|date:"F d, Y" }}, </a>
   <a href="#">{{ post.author }}</a>
 </div>

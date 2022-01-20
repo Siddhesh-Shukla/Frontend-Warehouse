@@ -36,7 +36,7 @@
     e.preventDefault();
     $.ajax({
       type: "POST",
-      url: '{% url "home" %}',
+      url: '{% url "workspace" %}',
       data: {
         text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
         csrfmiddlewaretoken: "{{ csrf_token }}",
@@ -54,7 +54,7 @@
     e.preventDefault();
     $.ajax({
       type: "POST",
-      url: '{% url "home" %}',
+      url: '{% url "workspace" %}',
       data: {
         text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
         csrfmiddlewaretoken: "{{ csrf_token }}",

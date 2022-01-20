@@ -1,9 +1,64 @@
-{% extends "main/base.html" %} {% block content_1 %}
-<div>
-  <form method="POST">
+
+{% extends "main/base.html" %} {% load static %} {% load widget_tweaks %} {% block content_1 %}
+<link rel="stylesheet" href="{% static 'main/editPage.css' %}" />
+<div class="editorContainer">
+  <form method="post" spellcheck="false">
     {% csrf_token %}
-    <fieldset>{{ form }}</fieldset>
+    
+    <div style="display: inline-block">
+      <div class="editorHead">HTML</div>
+      {{ form.html|attr:"name:HTML"|attr:"id:HTML"|add_class:"editorTextArea" }}
+    </div>
+    <div style="display: inline-block; width: 15px"></div>
+    <div style="display: inline-block">
+      <div class="editorHead">CSS</div>
+      {{ form.css|attr:"name:CSS"|attr:"id:CSS"|add_class:"editorTextArea" }}
+    </div>
+    {{ form.title|add_class:"input" }}
     <button type="submit">Post</button>
   </form>
+  </form>
 </div>
+<div style="width: 90%; border: none; margin: auto; margin-top: 0%">
+  <div class="outputHead">Output</div>
+  <div id="output" class="outputTextArea"></div>
+</div>
+<script>
+  $("#HTML").on("input", function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '{% url "workspace" %}',
+      data: {
+        text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+        dataType: "json",
+      },
+      success: function (data) {
+        $("#output").html(data.msg);
+      },
+      failure: function () {
+        console.log("Failed!");
+      },
+    });
+  });
+  $("#CSS").on("input", function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '{% url "workspace" %}',
+      data: {
+        text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+        dataType: "json",
+      },
+      success: function (data) {
+        $("#output").html(data.msg);
+      },
+      failure: function () {
+        console.log("Failed!");
+      },
+    });
+  });
+</script>
 {% endblock content_1 %}
