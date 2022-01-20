@@ -1,0 +1,62 @@
+{% extends "main/base.html" %} {% load static %} {% load widget_tweaks %}
+{%block content_1%}
+<link rel="stylesheet" href="{% static 'main/editPage.css' %}" />
+<h1>{{ object.title }}</h1>
+<div class="editorContainer">
+  <div style="display: inline-block">
+    <div class="editorHead">HTML</div>
+    <textarea name="HTML" id="HTML" class="editorTextArea" readonly>
+{{ object.html }}</textarea
+    >
+  </div>
+  <div style="display: inline-block; width: 15px"></div>
+  <div style="display: inline-block">
+    <div class="editorHead">CSS</div>
+    <textarea name="CSS" id="CSS" class="editorTextArea" readonly>
+{{ object.css }}</textarea
+    >
+  </div>
+</div>
+<div style="width: 90%; border: none; margin: auto; margin-top: 0%">
+  <div class="outputHead">Output</div>
+  <div id="output" class="outputTextArea"></div>
+</div>
+<!-- <script>
+  $("#HTML").on("input", function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '{% url "workspace" %}',
+      data: {
+        text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+        dataType: "json",
+      },
+      success: function (data) {
+        $("#output").html(data.msg);
+      },
+      failure: function () {
+        console.log("Failed!");
+      },
+    });
+  });
+  $("#CSS").on("input", function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '{% url "workspace" %}',
+      data: {
+        text: "<style> " + $("#CSS").val() + " </style> " + $("#HTML").val(),
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+        dataType: "json",
+      },
+      success: function (data) {
+        $("#output").html(data.msg);
+      },
+      failure: function () {
+        console.log("Failed!");
+      },
+    });
+  });
+</script> -->
+{% endblock content_1 %}
