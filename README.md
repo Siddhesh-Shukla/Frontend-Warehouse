@@ -7,7 +7,7 @@
 |||
 |:--:|:--:|
 | Backend Framework | Django |
-| Frontent Framework | CSS, HTML, JS |
+| Frontend Framework | CSS, HTML, JS |
 | Version Control | Github | 
 
 ---
