@@ -4,7 +4,7 @@
 <div class="editorContainer">
   <form method="post" spellcheck="false">
     {% csrf_token %}
-    
+    <div style="width: 100%; font-size: 1.8rem; padding-bottom: 20px; font-weight: 400;">Title: {{ form.title|add_class:"input" }}</div>
     <div style="display: inline-block">
       <div class="editorHead">HTML</div>
       {{ form.html|attr:"name:HTML"|attr:"id:HTML"|add_class:"editorTextArea" }}
@@ -14,15 +14,20 @@
       <div class="editorHead">CSS</div>
       {{ form.css|attr:"name:CSS"|attr:"id:CSS"|add_class:"editorTextArea" }}
     </div>
-    {{ form.title|add_class:"input" }}
-    <button type="submit">Post</button>
+    <div style="width: 100%; border: none; margin: auto; margin-top: 0%">
+      <div class="outputHead">Output</div>
+      <div id="output" class="outputTextArea"></div>
+    </div>
+    <div style="width: 100%; text-align: center;">
+    <button type="submit" 
+      style="font-size: large; width: 200px; padding: 10px; background-color: #f3cb76; font-weight: 400; color: rgb(0, 0, 0); border: 1px solid #f5d080; border-radius: 0.5rem; margin-bottom: 15px; margin-right: 30px;">Post</button>
+    <button 
+      style="font-size: large; width: 200px; padding: 10px; background-color: #ffffff; font-weight: 400; color: rgb(0, 0, 0); border: 1px solid #636363; border-radius: 0.5rem; margin-bottom: 15px; margin-left: 30px;">Cancel</button>
+    </div>
   </form>
   </form>
 </div>
-<div style="width: 90%; border: none; margin: auto; margin-top: 0%">
-  <div class="outputHead">Output</div>
-  <div id="output" class="outputTextArea"></div>
-</div>
+
 <script>
   $("#HTML").on("input", function (e) {
     e.preventDefault();

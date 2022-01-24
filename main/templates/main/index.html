@@ -1,4 +1,18 @@
 {% extends "main/base.html" %} {% block content_1 %}
+<!-- Breadcrumbs -->
+      <section class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Home Page</h2>
+            </form>
+            <ol>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+<!-- End Breadcrumbs -->
 <section class="cards">
   {% for post in posts %}
   <article
@@ -34,7 +48,7 @@
     </div>
   </article>
   {% endfor %}
-<!--   <article
+  <!--   <article
     class="card card--1"
     styles='background-image:url("{{ user.profile.image.url }}")'
   >
@@ -67,22 +81,25 @@
   </article> -->
 </section>
 {% if is_paginated %}
-  <div>
-    {% if page_obj.has_previous %}
-      <a href="?page=1">← First Page</a>
-      <a href="?page={{ page_obj.prev_page_number }}">prev</a>
-    {% endif %}
-    {% for num in page_obj.paginator.page_range %}
+<div style="width: 100%; text-align: center; font-size: 2rem; font-weight: 400">
+  {% if page_obj.has_previous %}
+  <!-- <a href="?page=1">← First Page</a> -->
+  <a href="?page={{ page_obj.prev_page_number }}">◄ Prev</a>
+  {% else %}
+  <a href="#" style="color: rgb(212, 212, 212)">◄ Prev</a>
+  {% endif %}
+  <!--     {% for num in page_obj.paginator.page_range %}
       {% if page_obj.number == num %}
         <a href="?page={{ num }}"> **{{num}}** </a>
       {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
         <a href="?page={{ num }}"> {{num}} </a>
       {% endif %}
-    {% endfor %}
-    {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">next</a>
-      <a href="?page={{ page_obj.paginator.num_pages }}">Last Page →</a>
-    {% endif %}
-  </div>
-{% endif %}
-{% endblock content_1 %}
+    {% endfor %} -->
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">Next ►</a>
+  <!-- <a href="?page={{ page_obj.paginator.num_pages }}">Last Page →</a> -->
+  {% else %}
+  <a href="#" style="color: rgb(212, 212, 212)">Next ►</a>
+  {% endif %}
+</div>
+{% endif %} {% endblock content_1 %}

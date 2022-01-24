@@ -40,6 +40,11 @@
   </head>
 
   <body>
+    {% if messages %} 
+      {% for message in messages %}
+        <div>{{ message }}</div>
+      {% endfor %}
+    {% endif %} 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
       <div
@@ -105,7 +110,6 @@
       </div>
     </header>
     <!-- End Header -->
-
     <main id="main" >
       <!-- Breadcrumbs -->
       <section class="breadcrumbs">
