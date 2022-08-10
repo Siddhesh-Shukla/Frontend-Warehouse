@@ -12,6 +12,7 @@
 
 ---
 
-<img src="https://github.com/Siddhesh-Shukla/Frontend-Warehouse/blob/main/media/Screenshots/1.jpg" width="1200"/> 
+<!-- <img src="https://github.com/Siddhesh-Shukla/Frontend-Warehouse/blob/main/media/Screenshots/1.jpg" width="1200"/> 
 <img src="https://github.com/Siddhesh-Shukla/Frontend-Warehouse/blob/main/media/Screenshots/2.png" width="1200"/> 
 <img src="https://github.com/Siddhesh-Shukla/Frontend-Warehouse/blob/main/media/Screenshots/3.png" width="1200"/> 
+-->
